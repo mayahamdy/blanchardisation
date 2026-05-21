@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: d3a0bf748c1d1e543b89bf707d565b7a
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/QuantumUser/Simulation/TurnBasedFramework/Commands/SkipCommand.cs
+  uploadId: 899424

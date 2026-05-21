@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 9a6146509c2e8ac4ba2ef118ab622d96
+labels:
+- QuantumAsset
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/QuantumUser/Resources/PhisicsMaterials/BorderPhysicsMat.asset
+  uploadId: 899424

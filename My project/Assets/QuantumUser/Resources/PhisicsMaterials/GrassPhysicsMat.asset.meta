@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 2a3ba5ef2f90f24408c69b4185b2d05d
+labels:
+- QuantumAsset
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/QuantumUser/Resources/PhisicsMaterials/GrassPhysicsMat.asset
+  uploadId: 899424

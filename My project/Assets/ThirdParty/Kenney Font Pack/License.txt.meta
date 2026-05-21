@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4abfac38ece04914cac198617c5858d3
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/ThirdParty/Kenney Font Pack/License.txt
+  uploadId: 899424

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 111e21797d3fc7b4e8a3f9eb235a634f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Scripts/Audio/AudioSourcePool.cs
+  uploadId: 899424

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: eb411d038640ae64fa2f9d6b72967240
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/PostProcessing/Utilities/CustomMotionTexture/ExampleScene/LightingData.asset
+  uploadId: 899424

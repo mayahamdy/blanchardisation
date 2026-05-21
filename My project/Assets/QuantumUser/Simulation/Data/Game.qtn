@@ -1,0 +1,17 @@
+﻿#define MAX_PLAYERS 2
+#pragma max_players 2
+
+enum ESpawnPointType { 
+    None,
+    Regular,
+    NearHole,
+}
+
+component SpawnPoint 
+{
+	ESpawnPointType Type;
+	Boolean IsAvailable;
+    entity_ref Entity;
+}
+
+synced event GameplayEnded { }

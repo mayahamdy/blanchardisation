@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746b4fbe2fa7cf54db0a1554560e6701, type: 3}
+  m_Name: ConfigAssets
+  m_EditorClassIdentifier: 
+  Identifier:
+    Path: QuantumUser/Resources/Configs/ConfigAssets
+    Guid:
+      Value: 381432578866924834
+  GameConfig:
+    Id:
+      Value: 473436094517681073
+  WaitingConfig:
+    Id:
+      Value: 306025648822247373
+  StartCountdownConfig:
+    Id:
+      Value: 415557842011786642
+  PlayTurnConfig:
+    Id:
+      Value: 431148869950027781
+  CountdownTurnConfig:
+    Id:
+      Value: 498545349907819816

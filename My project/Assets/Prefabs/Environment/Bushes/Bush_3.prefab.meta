@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: dd8a7e67e4d5fa7489cce450b29b6780
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Prefabs/Environment/Bushes/Bush_3.prefab
+  uploadId: 899424

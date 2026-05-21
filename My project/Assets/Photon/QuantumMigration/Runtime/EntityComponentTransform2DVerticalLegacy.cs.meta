@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0d69544a1e43b8c4fb8b7f9206717d64
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Photon/QuantumMigration/Runtime/EntityComponentTransform2DVerticalLegacy.cs
+  uploadId: 899424

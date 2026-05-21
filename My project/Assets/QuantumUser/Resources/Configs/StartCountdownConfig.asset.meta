@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 5ae857680265f184992d834d696f9fa8
+labels:
+- QuantumAsset
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/QuantumUser/Resources/Configs/StartCountdownConfig.asset
+  uploadId: 899424

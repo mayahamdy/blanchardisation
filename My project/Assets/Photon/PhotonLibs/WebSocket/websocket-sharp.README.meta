@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 3e262c2b04eaa8440987b50a91e86674
+DefaultImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.README
+  uploadId: 899424

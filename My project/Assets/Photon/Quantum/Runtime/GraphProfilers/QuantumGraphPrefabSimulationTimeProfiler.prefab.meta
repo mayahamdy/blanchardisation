@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b5dff54291e5b4748873203353355c29
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Photon/Quantum/Runtime/GraphProfilers/QuantumGraphPrefabSimulationTimeProfiler.prefab
+  uploadId: 899424

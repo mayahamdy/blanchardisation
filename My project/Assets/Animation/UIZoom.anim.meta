@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 25aa9873e69b3884ca7684f40f196515
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Animation/UIZoom.anim
+  uploadId: 899424

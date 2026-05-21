@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 1315846579102a745b2864b54d45d6e2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/QuantumUser/View/Generated/QPrototypeSpawnPoint.cs
+  uploadId: 899424

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d7daeefbca4f14360bac0e1df1bdacd4
+timeCreated: 1479896287
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/PostProcessing/Utilities/CustomMotionTexture/Materials/DebugMotionVectors.mat
+  uploadId: 899424

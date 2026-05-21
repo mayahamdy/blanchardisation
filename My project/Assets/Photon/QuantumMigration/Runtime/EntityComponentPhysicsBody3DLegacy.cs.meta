@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0fababf1e62fd1a4b8e68e0ae0cf0e10
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Photon/QuantumMigration/Runtime/EntityComponentPhysicsBody3DLegacy.cs
+  uploadId: 899424

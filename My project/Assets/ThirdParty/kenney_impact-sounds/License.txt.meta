@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 30661e74cda5d5d4ab862f5c6580d94f
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/ThirdParty/kenney_impact-sounds/License.txt
+  uploadId: 899424

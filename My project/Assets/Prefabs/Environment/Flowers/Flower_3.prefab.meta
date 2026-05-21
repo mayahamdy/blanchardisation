@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b779b539ea5cb5b48be4d672c7e71b9c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Prefabs/Environment/Flowers/Flower_3.prefab
+  uploadId: 899424

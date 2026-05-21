@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e9d43b40a333e0c45ba2437234faf613
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Prefabs/Course/WallsToOpen.prefab
+  uploadId: 899424
