@@ -1,0 +1,55 @@
+﻿enum ETurnType { 
+    None,
+    Waiting,
+    Play,
+    Countdown,
+}
+
+enum ETurnStatus { 
+    None,
+    Inactive,
+    Active,
+    Resolving,
+}
+
+enum ETurnEndReason { 
+    None,
+    Time,
+    Skip,
+    Play,
+    Resolved, 
+}
+
+struct TurnData
+{
+    player_ref Player;
+    entity_ref Entity;
+    asset_ref<TurnConfig> ConfigRef;
+    ETurnType Type;
+    ETurnStatus Status;
+    Int32 Number;
+    FrameTimer Timer;
+}
+
+singleton component TurnContainer
+{
+    TurnData CurrentTurn;
+}
+
+// ------------------ Signals ------------------
+signal OnTurnEnded           (TurnData data, ETurnEndReason reason);
+signal OnStartCommandReceived (PlayerRef player);
+signal OnPlayCommandReceived (PlayerRef player, PlayCommandData data);
+signal OnSkipCommandReceived (PlayerRef player, SkipCommandData data);
+
+// ------------------ Events ------------------
+abstract event TurnEvent                   { TurnData      Turn; }
+synced event TurnTypeChanged   : TurnEvent { ETurnType      PreviousType; }
+synced event TurnStatusChanged : TurnEvent { ETurnStatus    PreviousStatus; }
+synced event TurnEnded         : TurnEvent { ETurnEndReason Reason; }
+synced event TurnTimerReset    : TurnEvent { }
+synced event TurnActivated     : TurnEvent { }
+
+abstract event CommandEvent              { player_ref Player; }
+event PlayCommandReceived : CommandEvent { PlayCommandData Data; }
+event SkipCommandReceived : CommandEvent { SkipCommandData Data; }

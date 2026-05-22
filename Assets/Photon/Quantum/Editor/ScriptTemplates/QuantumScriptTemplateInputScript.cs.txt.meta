@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 838b0161125124d44a436a208b43c7bd
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Photon/Quantum/Editor/ScriptTemplates/QuantumScriptTemplateInputScript.cs.txt
+  uploadId: 899424

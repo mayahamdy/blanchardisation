@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: cd16fe4c968a207458d8e3ea45ab4c98
+labels:
+- QuantumAsset
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/QuantumUser/Resources/Ball.prefab
+  uploadId: 899424

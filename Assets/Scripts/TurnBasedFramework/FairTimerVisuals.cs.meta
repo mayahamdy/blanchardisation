@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 85f5b6c245897864abc0fc2dbd1476b4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Scripts/TurnBasedFramework/FairTimerVisuals.cs
+  uploadId: 899424

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2f77512a1f0e12c49b5029f9bf57c486
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Prefabs/Environment/CampFire.prefab
+  uploadId: 899424

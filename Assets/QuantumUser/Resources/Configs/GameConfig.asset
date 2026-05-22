@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6d5f5af0c61f44bb01d30e29c168b5, type: 3}
+  m_Name: GameConfig
+  m_EditorClassIdentifier: 
+  Identifier:
+    Path: QuantumUser/Resources/Configs/GameConfig
+    Guid:
+      Value: 473436094517681073
+  MaxStrokes: 12
+  SpawnBallsNearHole: 0
+  MinStrikeAngle: 0
+  MaxStrikeAngle: 60
+  MinStrikeForce: 5
+  MaxStrikeForce: 80
+  ForceBarVelocity: 2
+  HitHoleVelocityThreshold: 8
+  HoleBumpForce: 3
+  HoleTriggerLayer: Hole
+  RoughFieldLayer: RoughField

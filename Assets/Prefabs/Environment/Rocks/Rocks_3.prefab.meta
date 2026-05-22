@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 582770c428506af4cb920e86c07781ff
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Prefabs/Environment/Rocks/Rocks_3.prefab
+  uploadId: 899424

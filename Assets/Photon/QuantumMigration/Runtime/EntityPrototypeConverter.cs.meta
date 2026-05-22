@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: ea339fc279ee47fc90bd6bf60b09c035
+timeCreated: 1698188138
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Photon/QuantumMigration/Runtime/EntityPrototypeConverter.cs
+  uploadId: 899424

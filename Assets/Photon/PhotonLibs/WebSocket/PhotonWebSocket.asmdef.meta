@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a10ff188cbfd201409863c062b118e1d
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Photon/PhotonLibs/WebSocket/PhotonWebSocket.asmdef
+  uploadId: 899424

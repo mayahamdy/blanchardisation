@@ -1,0 +1,33 @@
+﻿input 
+{
+	FPVector3 Direction;
+	FP ForceBarMarkPos;
+}
+
+component Actor 
+{
+	Boolean Active;
+	player_ref Player;
+}
+
+component BallFields
+{
+	asset_ref<BallSpec> Spec;
+    TurnData TurnStats;
+    FPVector3 LastPosition;
+	Boolean HasCompletedCourse;
+    FrameTimer EndOfMovementTimer;
+    Int32 Score;
+}
+
+signal OnBallShot(entity_ref ball);
+event BallShot
+{
+    EntityRef Ball;
+}
+
+event BallHit
+{
+    EntityRef Ball;
+}
+

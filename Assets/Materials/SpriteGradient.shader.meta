@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 59d289c8545d6c341a421f1adf509d04
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Materials/SpriteGradient.shader
+  uploadId: 899424

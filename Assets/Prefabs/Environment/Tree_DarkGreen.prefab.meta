@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 267a3836435e68a40bfbe7489330c1d1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Prefabs/Environment/Tree_DarkGreen.prefab
+  uploadId: 899424

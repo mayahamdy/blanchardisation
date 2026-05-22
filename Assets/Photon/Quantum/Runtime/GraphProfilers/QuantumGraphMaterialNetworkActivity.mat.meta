@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 362fd7162ffc7f247adeddc6aefbec08
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Photon/Quantum/Runtime/GraphProfilers/QuantumGraphMaterialNetworkActivity.mat
+  uploadId: 899424

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: a8a7591ca2065cf4fb3c599e0aa2621b
+labels:
+- QuantumAsset
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/QuantumUser/Resources/PhisicsMaterials/RoughFieldPhysicsMat.asset
+  uploadId: 899424

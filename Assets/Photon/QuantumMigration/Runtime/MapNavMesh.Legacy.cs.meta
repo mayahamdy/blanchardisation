@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 0c9d38b467364bb7bc23a0bc20ddeecb
+timeCreated: 1698188440
+AssetOrigin:
+  serializedVersion: 1
+  productId: 371146
+  packageName: Mini Golf Multiplayer - Photon Quantum
+  packageVersion: 1.0
+  assetPath: Assets/Photon/QuantumMigration/Runtime/MapNavMesh.Legacy.cs
+  uploadId: 899424
