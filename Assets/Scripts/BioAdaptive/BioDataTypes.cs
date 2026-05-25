@@ -43,5 +43,6 @@ namespace BioAdaptive
         public float heart_rate_variability;
         public float breath_rate;
         public float eda_level;
+        public float movement;               // 0.0 (stable) → 1.0 (shaking, from accelerometer)
     }
 }

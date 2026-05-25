@@ -16387,8 +16387,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2564105, y: 3.578053, z: 0.25600997}
-  m_Center: {x: -0.008782387, y: 1.2890265, z: 0.000695467}
+  m_Size: {x: 0.2564105, y: 1.533168, z: 0.25600997}
+  m_Center: {x: -0.008782387, y: 0.26658398, z: 0.000695467}
 --- !u!114 &1352797433 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114422793184296498, guid: 6d5099fc47ef7874786a57e1708c9417,
@@ -24587,7 +24587,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 63.35353, y: 0.5030815, z: 139.26097}
+  m_Size: {x: 180, y: 0.5030815, z: 180}
   m_Center: {x: -1.521553, y: -0.24845925, z: 34.313835}
 --- !u!1001 &2018115806
 PrefabInstance:
@@ -26467,6 +26467,8 @@ MonoBehaviour:
   chargeSpeed: 0.75
   rotationSpeed: 10
   arrowDistance: 0.5
+  maxAimShake: 15
+  shakeSpeed: 8
   airLaunchAngle: 40
   liftStartCharge: 0.2
   forceCurve: 0.72

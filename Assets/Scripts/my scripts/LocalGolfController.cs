@@ -13,6 +13,10 @@ public class LocalGolfController : MonoBehaviour
     public float rotationSpeed = 10f;
     [Tooltip("How far in front of the ball the arrow sits")]
     public float arrowDistance = 0.5f;
+    [Tooltip("Maximum aim shake in degrees when movement = 1.0 (fully unstable).")]
+    public float maxAimShake = 40f;
+    [Tooltip("Base speed of the shake oscillation.")]
+    public float shakeSpeed = 8f;
     [Tooltip("Maximum upward launch angle (degrees) reached at full charge.")]
     public float airLaunchAngle = 8f;
     [Tooltip("Charge fraction (0-1) at which the upward tilt begins to ramp up.")]
@@ -38,11 +42,12 @@ public class LocalGolfController : MonoBehaviour
     public float rollTimeout = 7f;
 
     private Rigidbody _rb;
-    private float _chargeRaw  = 0f;
-    private bool  _isCharging = false;
-    private int   _chargeDir  = 1;
-    private float _aimAngle   = 0f;
-    private float _rollTimer  = 0f;
+    private float _chargeRaw   = 0f;
+    private bool  _isCharging  = false;
+    private int   _chargeDir   = 1;
+    private float _aimAngle    = 0f;
+    private float _shakeOffset = 0f;
+    private float _rollTimer   = 0f;
     private Vector3 _startPosition;
 
     private void Start()
@@ -118,10 +123,17 @@ public class LocalGolfController : MonoBehaviour
 
         _aimAngle += Mouse.current.delta.x.ReadValue() * rotationSpeed * Time.deltaTime;
 
+        // Accelerometer-based aim shake: two noise layers give erratic, unpredictable wobble.
+        float movement = BioBridge.Instance != null ? BioBridge.Instance.LastData.movement : 0f;
+        float n1 = (Mathf.PerlinNoise(Time.time * shakeSpeed,        0f) * 2f - 1f);
+        float n2 = (Mathf.PerlinNoise(Time.time * shakeSpeed * 2.7f, 5f) * 2f - 1f);
+        _shakeOffset = (n1 * 0.65f + n2 * 0.35f) * movement * maxAimShake;
+
         if (aimingArrow == null) return;
-        Vector3 forward = Quaternion.Euler(0, _aimAngle, 0) * Vector3.forward;
+        float displayAngle = _aimAngle + _shakeOffset;
+        Vector3 forward = Quaternion.Euler(0, displayAngle, 0) * Vector3.forward;
         aimingArrow.transform.position = transform.position + forward * arrowDistance + new Vector3(0, 0.05f, 0);
-        aimingArrow.transform.rotation = Quaternion.Euler(90f, _aimAngle - 90f, 0f);
+        aimingArrow.transform.rotation = Quaternion.Euler(90f, displayAngle - 90f, 0f);
     }
 
     // ── Charge bar ───────────────────────────────────────────────────────────
@@ -184,7 +196,9 @@ public class LocalGolfController : MonoBehaviour
         // Tilt ramps from 0 at liftStartCharge up to airLaunchAngle at full charge.
         float liftFraction = Mathf.InverseLerp(liftStartCharge, 1f, _chargeRaw);
         float tilt = -airLaunchAngle * liftFraction;
-        Vector3 dir = Quaternion.Euler(tilt, _aimAngle, 0) * Vector3.forward;
+
+        // The shot fires in the currently-shaken direction — unstable arm = inaccurate shot.
+        Vector3 dir = Quaternion.Euler(tilt, _aimAngle + _shakeOffset, 0) * Vector3.forward;
         _rb.AddForce(dir * force, ForceMode.Impulse);
 
         if (chargeBarFill != null) chargeBarFill.fillAmount = 0f;
