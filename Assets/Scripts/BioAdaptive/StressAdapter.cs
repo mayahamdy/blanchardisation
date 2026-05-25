@@ -24,7 +24,7 @@ namespace QuantumMiniGolf
 
         [Header("Wind force range")]
         public float windMin = 0f;
-        public float windMax = 8f;
+        public float windMax = 2f;
 
         [Header("Camera shake range")]
         public float shakeMin = 0f;

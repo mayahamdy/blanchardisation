@@ -18,13 +18,19 @@ public class LocalGolfController : MonoBehaviour
     public Image    chargeBarFill;
     public GameObject aimingArrow;
 
-    public float AimAngle => _aimAngle;
+    public float AimAngle  => _aimAngle;
+    public bool  IsRolling => _rollTimer > 0f;
+
+    [Header("Roll timeout")]
+    [Tooltip("Seconds after a shot before the ball is forced to stop.")]
+    public float rollTimeout = 7f;
 
     private Rigidbody _rb;
     private float _chargeRaw      = 0f;
     private bool  _isCharging     = false;
     private int   _chargeDir      = 1;
     private float _aimAngle       = 0f;
+    private float _rollTimer      = 0f;
 
     private void Start()
     {
@@ -50,6 +56,18 @@ public class LocalGolfController : MonoBehaviour
 
     private void Update()
     {
+        // Auto-stop: force ball to rest after rollTimeout seconds.
+        if (_rollTimer > 0f)
+        {
+            _rollTimer -= Time.deltaTime;
+            if (_rollTimer <= 0f)
+            {
+                _rollTimer = 0f;
+                _rb.linearVelocity    = Vector3.zero;
+                _rb.angularVelocity   = Vector3.zero;
+            }
+        }
+
         bool isMoving = _rb.linearVelocity.magnitude > 0.1f;
 
         if (aimingArrow != null)
@@ -129,6 +147,7 @@ public class LocalGolfController : MonoBehaviour
     private void Shoot()
     {
         _isCharging = false;
+        _rollTimer  = rollTimeout;
 
         float force = _chargeRaw * maxStrikeForce;
         Vector3 dir = Quaternion.Euler(0, _aimAngle, 0) * Vector3.forward;
