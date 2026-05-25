@@ -26462,12 +26462,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef5beb526f2ee343a2def843276d5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStrikeForce: 40
+  maxStrikeForce: 30
   gameManager: {fileID: 1026887284}
-  chargeSpeed: 1.5
+  chargeSpeed: 0.75
   rotationSpeed: 10
   arrowDistance: 0.5
-  airLaunchAngle: 60
+  airLaunchAngle: 40
   liftStartCharge: 0.2
   forceCurve: 0.72
   outOfBoundsDepth: 5
@@ -26534,6 +26534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d047643530a0921468699bb7bcc3cbd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  airWindMultiplier: 4
 --- !u!33 &5829744702469451762
 MeshFilter:
   m_ObjectHideFlags: 0

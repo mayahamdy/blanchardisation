@@ -9,7 +9,7 @@ public class LocalGolfController : MonoBehaviour
     [Header("Shot Settings")]
     public float maxStrikeForce = 2000f;
     public LocalGameManager gameManager;
-    public float chargeSpeed   = 1.5f;
+    public float chargeSpeed   = 0.75f;
     public float rotationSpeed = 10f;
     [Tooltip("How far in front of the ball the arrow sits")]
     public float arrowDistance = 0.5f;
