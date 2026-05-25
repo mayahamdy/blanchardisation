@@ -7,12 +7,14 @@ using UnityEngine.UI;
 public class LocalGolfController : MonoBehaviour
 {
     [Header("Shot Settings")]
-    public float maxStrikeForce = 1000f;
+    public float maxStrikeForce = 3000f;
     public LocalGameManager gameManager;
     public float chargeSpeed   = 1.5f;
     public float rotationSpeed = 10f;
     [Tooltip("How far in front of the ball the arrow sits")]
     public float arrowDistance = 0.5f;
+    [Tooltip("Upward launch angle (degrees) added when the charge bar is at maximum.")]
+    public float airLaunchAngle = 35f;
 
     [Header("UI Elements")]
     public Image    chargeBarFill;
@@ -62,14 +64,23 @@ public class LocalGolfController : MonoBehaviour
     private void Update()
     {
         // Auto-stop: force ball to rest after rollTimeout seconds.
+        // If the ball is still airborne, wait another 2 s before trying again.
         if (_rollTimer > 0f)
         {
             _rollTimer -= Time.deltaTime;
             if (_rollTimer <= 0f)
             {
-                _rollTimer = 0f;
-                _rb.linearVelocity    = Vector3.zero;
-                _rb.angularVelocity   = Vector3.zero;
+                bool grounded = Physics.Raycast(transform.position, Vector3.down, 0.6f);
+                if (grounded)
+                {
+                    _rollTimer          = 0f;
+                    _rb.linearVelocity  = Vector3.zero;
+                    _rb.angularVelocity = Vector3.zero;
+                }
+                else
+                {
+                    _rollTimer = 2f; // still airborne — retry in 2 s
+                }
             }
         }
 
@@ -155,7 +166,10 @@ public class LocalGolfController : MonoBehaviour
             QuantumMiniGolf.SessionStats.Instance.AddStroke();
 
         float force = _chargeRaw * maxStrikeForce;
-        Vector3 dir = Quaternion.Euler(0, _aimAngle, 0) * Vector3.forward;
+
+        // Full charge → launch into the air at airLaunchAngle degrees upward.
+        float tilt = (_chargeRaw >= 0.99f) ? -airLaunchAngle : 0f;
+        Vector3 dir = Quaternion.Euler(tilt, _aimAngle, 0) * Vector3.forward;
         _rb.AddForce(dir * force, ForceMode.Impulse);
 
         if (chargeBarFill != null) chargeBarFill.fillAmount = 0f;
