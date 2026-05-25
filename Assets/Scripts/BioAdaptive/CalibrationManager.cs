@@ -21,8 +21,8 @@ namespace QuantumMiniGolf
         public GameObject resultsPanel;
 
         [Header("Calibration Panel")]
-        public Image          progressBarFill; // an Image set to Image Type → Filled, Fill Method → Horizontal
-        public TextMeshProUGUI timerText;       // "20 / 60 s"
+        public Image           progressBarFill;
+        public TextMeshProUGUI timerText;
 
         [Header("Results Panel")]
         public TextMeshProUGUI hrText;
@@ -42,19 +42,17 @@ namespace QuantumMiniGolf
             if (startButton != null) startButton.gameObject.SetActive(false);
             if (startButton != null) startButton.onClick.AddListener(LoadGameScene);
 
-            // If BioBridge somehow isn't ready yet, bail gracefully.
             if (BioBridge.Instance == null)
             {
                 Debug.LogError("[CalibrationManager] BioBridge not found. Make sure the scene is launched from the project.");
                 return;
             }
 
-            BioBridge.Instance.OnConnected            += HandleConnected;
-            BioBridge.Instance.OnDisconnected         += HandleDisconnected;
-            BioBridge.Instance.OnCalibrationProgress  += HandleProgress;
-            BioBridge.Instance.OnCalibrationComplete  += HandleComplete;
+            BioBridge.Instance.OnConnected           += HandleConnected;
+            BioBridge.Instance.OnDisconnected        += HandleDisconnected;
+            BioBridge.Instance.OnCalibrationProgress += HandleProgress;
+            BioBridge.Instance.OnCalibrationComplete += HandleComplete;
 
-            // Handle the case where BioBridge already connected before this scene loaded.
             if (BioBridge.Instance.IsConnected)
                 HandleConnected();
         }
@@ -79,7 +77,6 @@ namespace QuantumMiniGolf
 
         private void HandleDisconnected()
         {
-            // Only revert to the waiting panel if calibration hasn't started yet.
             if (calibrationPanel != null && calibrationPanel.activeSelf)
                 ShowPanel(waitingPanel);
         }
@@ -88,7 +85,6 @@ namespace QuantumMiniGolf
         {
             if (progressBarFill != null)
                 progressBarFill.fillAmount = msg.progress;
-
             if (timerText != null)
                 timerText.text = $"{Mathf.RoundToInt(msg.elapsed_sec)} / {Mathf.RoundToInt(msg.total_sec)} s";
         }
@@ -96,11 +92,9 @@ namespace QuantumMiniGolf
         private void HandleComplete(CalibrationCompleteMessage msg)
         {
             ShowPanel(resultsPanel);
-
             if (hrText   != null) hrText.text   = $"FC au repos : {msg.hr_rest:F0} bpm ({msg.hr_label})";
             if (hrvText  != null) hrvText.text  = $"HRV au repos : {msg.hrv_rest:F0} ms";
             if (respText != null) respText.text = $"Respiration : {msg.resp_rest:F1} bpm ({msg.resp_label})";
-
             StartCoroutine(RevealStartButton(resultsDisplayDuration));
         }
 
