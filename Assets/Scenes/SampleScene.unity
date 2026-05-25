@@ -24542,9 +24542,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2017034367}
+  - component: {fileID: 2017034368}
   m_Layer: 0
   m_Name: RoughField
-  m_TagString: Untagged
+  m_TagString: Roughfield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -24567,6 +24568,27 @@ Transform:
   - {fileID: 215628037}
   m_Father: {fileID: 945660546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2017034368
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017034366}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 63.35353, y: 0.5030815, z: 139.26097}
+  m_Center: {x: -1.521553, y: -0.24845925, z: 34.313835}
 --- !u!1001 &2018115806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26440,11 +26462,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef5beb526f2ee343a2def843276d5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStrikeForce: 10
+  maxStrikeForce: 40
   gameManager: {fileID: 1026887284}
   chargeSpeed: 1.5
   rotationSpeed: 10
   arrowDistance: 0.5
+  airLaunchAngle: 60
+  liftStartCharge: 0.2
+  forceCurve: 0.72
+  outOfBoundsDepth: 5
   chargeBarFill: {fileID: 594873725}
   aimingArrow: {fileID: 2043819458}
   rollTimeout: 4

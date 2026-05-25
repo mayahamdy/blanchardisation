@@ -7,17 +7,27 @@ using UnityEngine.UI;
 public class LocalGolfController : MonoBehaviour
 {
     [Header("Shot Settings")]
-    public float maxStrikeForce = 3000f;
+    public float maxStrikeForce = 2000f;
     public LocalGameManager gameManager;
     public float chargeSpeed   = 1.5f;
     public float rotationSpeed = 10f;
     [Tooltip("How far in front of the ball the arrow sits")]
     public float arrowDistance = 0.5f;
-    [Tooltip("Upward launch angle (degrees) added when the charge bar is at maximum.")]
-    public float airLaunchAngle = 35f;
+    [Tooltip("Maximum upward launch angle (degrees) reached at full charge.")]
+    public float airLaunchAngle = 8f;
+    [Tooltip("Charge fraction (0-1) at which the upward tilt begins to ramp up.")]
+    [Range(0f, 0.9f)]
+    public float liftStartCharge = 0.6f;
+    [Tooltip("Force curve exponent. 0.5 = sqrt (lots of power at low charge). 1.0 = linear.")]
+    [Range(0.2f, 1f)]
+    public float forceCurve = 0.7f;
+
+    [Header("Out of Bounds")]
+    [Tooltip("How far below the start position the ball must fall before it respawns.")]
+    public float outOfBoundsDepth = 5f;
 
     [Header("UI Elements")]
-    public Image    chargeBarFill;
+    public Image      chargeBarFill;
     public GameObject aimingArrow;
 
     public float AimAngle  => _aimAngle;
@@ -28,20 +38,21 @@ public class LocalGolfController : MonoBehaviour
     public float rollTimeout = 7f;
 
     private Rigidbody _rb;
-    private float _chargeRaw      = 0f;
-    private bool  _isCharging     = false;
-    private int   _chargeDir      = 1;
-    private float _aimAngle       = 0f;
-    private float _rollTimer      = 0f;
+    private float _chargeRaw  = 0f;
+    private bool  _isCharging = false;
+    private int   _chargeDir  = 1;
+    private float _aimAngle   = 0f;
+    private float _rollTimer  = 0f;
+    private Vector3 _startPosition;
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        _rb            = GetComponent<Rigidbody>();
+        _startPosition = transform.position;
 
         if (chargeBarFill != null)
             chargeBarFill.fillAmount = 0f;
 
-        // Detach arrow so it doesn't tumble when the ball rolls.
         if (aimingArrow != null)
             aimingArrow.transform.SetParent(null);
 
@@ -63,8 +74,11 @@ public class LocalGolfController : MonoBehaviour
 
     private void Update()
     {
-        // Auto-stop: force ball to rest after rollTimeout seconds.
-        // If the ball is still airborne, wait another 2 s before trying again.
+        // Out-of-bounds: ball fell off the course.
+        if (transform.position.y < _startPosition.y - outOfBoundsDepth)
+            ResetToStart();
+
+        // Auto-stop after rollTimeout; waits until ball is grounded if airborne.
         if (_rollTimer > 0f)
         {
             _rollTimer -= Time.deltaTime;
@@ -79,7 +93,7 @@ public class LocalGolfController : MonoBehaviour
                 }
                 else
                 {
-                    _rollTimer = 2f; // still airborne — retry in 2 s
+                    _rollTimer = 2f;
                 }
             }
         }
@@ -113,7 +127,6 @@ public class LocalGolfController : MonoBehaviour
     // ── Charge bar ───────────────────────────────────────────────────────────
 
     // Mouse fallback: only active when the BITalino sensor is not connected.
-    // First click = start charge, second click = shoot.
     private void HandleChargeToggle()
     {
         if (Mouse.current == null) return;
@@ -165,10 +178,12 @@ public class LocalGolfController : MonoBehaviour
         if (QuantumMiniGolf.SessionStats.Instance != null)
             QuantumMiniGolf.SessionStats.Instance.AddStroke();
 
-        float force = _chargeRaw * maxStrikeForce;
+        // Non-linear force curve: small charge still hits hard.
+        float force = Mathf.Pow(_chargeRaw, forceCurve) * maxStrikeForce;
 
-        // Full charge → launch into the air at airLaunchAngle degrees upward.
-        float tilt = (_chargeRaw >= 0.99f) ? -airLaunchAngle : 0f;
+        // Tilt ramps from 0 at liftStartCharge up to airLaunchAngle at full charge.
+        float liftFraction = Mathf.InverseLerp(liftStartCharge, 1f, _chargeRaw);
+        float tilt = -airLaunchAngle * liftFraction;
         Vector3 dir = Quaternion.Euler(tilt, _aimAngle, 0) * Vector3.forward;
         _rb.AddForce(dir * force, ForceMode.Impulse);
 
@@ -176,7 +191,20 @@ public class LocalGolfController : MonoBehaviour
         _chargeRaw = 0f;
     }
 
-    // ── Hole detection ────────────────────────────────────────────────────────
+    // ── Out of bounds ─────────────────────────────────────────────────────────
+
+    private void ResetToStart()
+    {
+        _rb.linearVelocity  = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
+        transform.position  = _startPosition;
+        _rollTimer          = 0f;
+        _isCharging         = false;
+        _chargeRaw          = 0f;
+        if (chargeBarFill != null) chargeBarFill.fillAmount = 0f;
+    }
+
+    // ── Collision / trigger detection ─────────────────────────────────────────
 
     private void OnTriggerEnter(Collider other)
     {
@@ -185,5 +213,16 @@ public class LocalGolfController : MonoBehaviour
             gameManager.ShowWinScreen();
             gameObject.SetActive(false);
         }
+        else if (other.CompareTag("Roughfield"))
+        {
+            ResetToStart();
+        }
+    }
+
+    // Handles roughfield as a solid (non-trigger) collider.
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Roughfield"))
+            ResetToStart();
     }
 }

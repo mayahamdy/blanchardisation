@@ -39,11 +39,6 @@ namespace QuantumMiniGolf
         private static readonly Color COL_HIGH    = new Color(1.00f, 0.45f, 0.15f);
         private static readonly Color COL_EXTREME = new Color(1.00f, 0.20f, 0.20f);
 
-        private void Awake()
-        {
-            gameObject.SetActive(false);
-        }
-
         private void OnEnable()
         {
             if (replayButton != null)

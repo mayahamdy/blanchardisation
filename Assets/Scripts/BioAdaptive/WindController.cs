@@ -10,6 +10,9 @@ namespace QuantumMiniGolf
         /// <summary>Normalised world-space direction the wind is blowing towards.</summary>
         public Vector3 WindDirection { get; private set; }
 
+        [Tooltip("Wind force multiplier when the ball is airborne (not touching the ground).")]
+        public float airWindMultiplier = 4f;
+
         private Rigidbody _rb;
         private LocalGolfController _golf;
 
@@ -36,7 +39,10 @@ namespace QuantumMiniGolf
             if (_golf != null && !_golf.IsRolling) return;
 
             if (_rb.linearVelocity.magnitude < 0.2f) return;
-            _rb.AddForce(WindDirection * StressAdapter.Instance.WindForce, ForceMode.Force);
+
+            bool grounded = Physics.Raycast(transform.position, Vector3.down, 0.6f);
+            float multiplier = grounded ? 1f : airWindMultiplier;
+            _rb.AddForce(WindDirection * StressAdapter.Instance.WindForce * multiplier, ForceMode.Force);
         }
 
         private void OnDestroy()
