@@ -33,7 +33,8 @@ namespace BioAdaptive
         public event Action<CalibrationProgressMessage> OnCalibrationProgress;
         public event Action<CalibrationCompleteMessage> OnCalibrationComplete;
         public event Action<BioDataMessage> OnBioData;
-        public event Action OnShotTriggered; // fires once per EMG release (rising edge)
+        public event Action OnShotStart;  // fires once when EMG contraction begins
+        public event Action OnShotEnd;    // fires once when EMG contraction ends
 
         // ── Readable state ───────────────────────────────────────────────────
         public bool IsConnected { get; private set; }
@@ -44,7 +45,8 @@ namespace BioAdaptive
         private CancellationTokenSource _cts;
         private readonly ConcurrentQueue<string> _jsonQueue   = new ConcurrentQueue<string>();
         private readonly ConcurrentQueue<Action> _actionQueue = new ConcurrentQueue<Action>();
-        private bool _prevShotTriggered;
+        private bool _prevShotStart;
+        private bool _prevShotEnd;
 
         private const string WS_URL           = "ws://localhost:8765";
         private const int    RECONNECT_DELAY  = 2000; // ms
@@ -57,13 +59,13 @@ namespace BioAdaptive
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // Safe defaults so the game can run even without a sensor connected.
             LastData = new BioDataMessage
             {
                 stress                 = 0f,
                 heart_rate             = 70f,
                 heart_rate_variability = 40f,
                 breath_rate            = 14f,
+                eda_level              = 0f,
             };
         }
 
@@ -184,10 +186,11 @@ namespace BioAdaptive
                         LastData = data;
                         OnBioData?.Invoke(data);
 
-                        // Rising-edge detection: fire OnShotTriggered only on the first true frame.
-                        if (data.shot_triggered && !_prevShotTriggered)
-                            OnShotTriggered?.Invoke();
-                        _prevShotTriggered = data.shot_triggered;
+                        // Rising-edge detection for both shot events.
+                        if (data.shot_start && !_prevShotStart) OnShotStart?.Invoke();
+                        if (data.shot_end   && !_prevShotEnd)   OnShotEnd?.Invoke();
+                        _prevShotStart = data.shot_start;
+                        _prevShotEnd   = data.shot_end;
                         break;
 
                     default:

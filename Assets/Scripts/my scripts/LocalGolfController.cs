@@ -43,15 +43,20 @@ public class LocalGolfController : MonoBehaviour
         if (aimingArrow != null)
             aimingArrow.transform.SetParent(null);
 
-        // EMG shot trigger — fires once per muscle release.
         if (BioBridge.Instance != null)
-            BioBridge.Instance.OnShotTriggered += OnEMGShot;
+        {
+            BioBridge.Instance.OnShotStart += OnEMGShotStart;
+            BioBridge.Instance.OnShotEnd   += OnEMGShotEnd;
+        }
     }
 
     private void OnDestroy()
     {
         if (BioBridge.Instance != null)
-            BioBridge.Instance.OnShotTriggered -= OnEMGShot;
+        {
+            BioBridge.Instance.OnShotStart -= OnEMGShotStart;
+            BioBridge.Instance.OnShotEnd   -= OnEMGShotEnd;
+        }
     }
 
     private void Update()
@@ -96,23 +101,16 @@ public class LocalGolfController : MonoBehaviour
 
     // ── Charge bar ───────────────────────────────────────────────────────────
 
-    // Left-click starts charging; a second left-click fires as a fallback
-    // (useful when testing without the BITalino sensor).
+    // Mouse fallback: only active when the BITalino sensor is not connected.
+    // First click = start charge, second click = shoot.
     private void HandleChargeToggle()
     {
         if (Mouse.current == null) return;
         if (!Mouse.current.leftButton.wasPressedThisFrame) return;
+        if (BioBridge.Instance != null && BioBridge.Instance.IsConnected) return;
 
-        if (!_isCharging)
-        {
-            StartCharge();
-        }
-        else
-        {
-            // Fallback: fire on second click (sensor not connected).
-            if (BioBridge.Instance == null || !BioBridge.Instance.IsConnected)
-                Shoot();
-        }
+        if (!_isCharging) StartCharge();
+        else              Shoot();
     }
 
     private void StartCharge()
@@ -137,10 +135,15 @@ public class LocalGolfController : MonoBehaviour
 
     // ── Firing ───────────────────────────────────────────────────────────────
 
-    // Called by BioBridge when the EMG muscle is released.
-    private void OnEMGShot()
+    private void OnEMGShotStart()
     {
-        if (!_isCharging) return; // ignore if not in aiming phase
+        if (_isCharging) return;
+        StartCharge();
+    }
+
+    private void OnEMGShotEnd()
+    {
+        if (!_isCharging) return;
         Shoot();
     }
 
@@ -148,6 +151,8 @@ public class LocalGolfController : MonoBehaviour
     {
         _isCharging = false;
         _rollTimer  = rollTimeout;
+        if (QuantumMiniGolf.SessionStats.Instance != null)
+            QuantumMiniGolf.SessionStats.Instance.AddStroke();
 
         float force = _chargeRaw * maxStrikeForce;
         Vector3 dir = Quaternion.Euler(0, _aimAngle, 0) * Vector3.forward;

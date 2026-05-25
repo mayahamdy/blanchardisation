@@ -36,13 +36,12 @@ namespace BioAdaptive
     public class BioDataMessage
     {
         public string type;
-        public bool shot_triggered;          // true for exactly 1 message when EMG releases
+        public bool  shot_start;             // true on the frame an EMG contraction begins
+        public bool  shot_end;               // true on the frame the EMG contraction ends
         public float stress;                 // 0.0 (calm) → 1.0 (high stress)
         public float heart_rate;
         public float heart_rate_variability;
         public float breath_rate;
-        public float breath_amp_min;
-        public float breath_amp_max;
         public float eda_level;
     }
 }
